@@ -7,12 +7,22 @@ export default class Paddle {
       y: cHeight - this.height * 2
     }
     this.color = color
+    this.maxSpeed = 7
+    this.speed = 0
+  }
+  moveLeft() {
+    this.speed = -this.maxSpeed
+  }
+  moveRight() {
+    this.speed = this.maxSpeed
   }
   draw(ctx) {
     ctx.fillStyle = this.color
     ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height)
   }
-  update(deltaTime) {
-    this.pos.x += 5 / deltaTime || 1
+  update(deltaTime, cWidth) {
+    this.pos.x += this.speed
+    if (this.pos.x < 0) this.pos.x = 0
+    if (this.pos.x > cWidth - this.width) this.pos.x = cWidth - this.width
   }
 }
