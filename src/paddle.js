@@ -12,4 +12,7 @@ export default class Paddle {
     ctx.fillStyle = this.color
     ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height)
   }
+  update(deltaTime) {
+    this.pos.x += 5 / deltaTime || 1
+  }
 }
