@@ -4,11 +4,11 @@ export default class Ball {
   constructor(radius, color, game) {
     this.radius = radius
     this.pos = {
-      x: game.width / 2,
-      y: game.height / 2
+      x: 16,
+      y: 10
     }
     this.game = game
-    this.speed = { x: Math.random() * 4 - 2, y: 2 }
+    this.speed = { x: Math.random() * 8 - 4, y: 4 }
     this.color = color
   }
   draw(ctx) {
@@ -25,7 +25,7 @@ export default class Ball {
     if (this.pos.y >= height - this.radius) {
       this.pos.y = height / 2
       this.pos.x = width / 2
-      this.speed = { x: Math.random() * 4 - 2, y: 2 }
+      this.speed = { x: Math.random() * 8 - 4, y: 4 }
     }
     //wall top
     if (this.pos.y <= this.radius) {
