@@ -11,6 +11,11 @@ export default class Ball {
     this.speed = { x: Math.random() * 8 - 4, y: 4 }
     this.color = color
   }
+  reset() {
+    this.pos.x = this.game.width / 2
+    this.pos.y = this.game.height / 2
+    this.speed = { x: Math.random() * 8 - 4, y: 4 }
+  }
   draw(ctx) {
     ctx.beginPath()
     ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI)
@@ -24,9 +29,7 @@ export default class Ball {
     //wall bottom
     if (this.pos.y >= height - this.radius) {
       this.game.lives--
-      this.pos.y = height / 2
-      this.pos.x = width / 2
-      this.speed = { x: Math.random() * 8 - 4, y: 4 }
+      this.reset()
     }
     //wall top
     if (this.pos.y <= this.radius) {
