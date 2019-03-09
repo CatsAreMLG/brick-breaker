@@ -31,6 +31,14 @@ export default class Game {
   }
   draw(ctx) {
     this.gameObjects.forEach(objects => objects.draw(ctx))
+    if (this.gamestate == GAME_STATE.PAUSED) {
+      ctx.fillStyle = 'rgba(0,0,0,0.5)'
+      ctx.fillRect(0, 0, this.width, this.height)
+      ctx.font = '30px Arial'
+      ctx.fillStyle = 'white'
+      ctx.textAlign = 'center'
+      ctx.fillText('Paused', this.width / 2, this.height / 2)
+    }
   }
   update(deltaTime) {
     if (this.gamestate == GAME_STATE.PAUSED) return
