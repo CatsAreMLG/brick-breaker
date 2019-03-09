@@ -18,5 +18,23 @@ export default class InputHandler {
           break
       }
     })
+    document.addEventListener('keyup', e => {
+      switch (e.keyCode) {
+        case 37:
+          if (paddle.speed < 0) paddle.stop()
+          break
+        case 65:
+          if (paddle.speed < 0) paddle.stop()
+          break
+        case 39:
+          if (paddle.speed > 0) paddle.stop()
+          break
+        case 68:
+          if (paddle.speed > 0) paddle.stop()
+          break
+        default:
+          break
+      }
+    })
   }
 }

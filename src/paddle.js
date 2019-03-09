@@ -9,12 +9,16 @@ export default class Paddle {
     this.color = color
     this.maxSpeed = 7
     this.speed = 0
+    this.friction = 0.7
   }
   moveLeft() {
     this.speed = -this.maxSpeed
   }
   moveRight() {
     this.speed = this.maxSpeed
+  }
+  stop() {
+    this.speed = 0
   }
   draw(ctx) {
     ctx.fillStyle = this.color
