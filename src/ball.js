@@ -4,8 +4,8 @@ export default class Ball {
   constructor(radius, color, game) {
     this.radius = radius
     this.pos = {
-      x: 16,
-      y: 10
+      x: game.width / 2,
+      y: game.height / 2
     }
     this.game = game
     this.speed = { x: Math.random() * 8 - 4, y: 4 }
