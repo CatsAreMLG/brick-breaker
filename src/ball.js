@@ -1,10 +1,11 @@
 export default class Ball {
-  constructor(radius, cWidth, cHeight, color) {
+  constructor(radius, color, game) {
     this.radius = radius
     this.pos = {
-      x: cWidth / 2,
-      y: cHeight / 2
+      x: game.width / 2,
+      y: game.height / 2
     }
+    this.game = game
     this.speed = { x: Math.random() * 4 - 2, y: 2 }
     this.color = color
   }
@@ -15,18 +16,18 @@ export default class Ball {
     ctx.fill()
     ctx.closePath()
   }
-  update(deltaTime, cWidth, cHeight) {
+  update(deltaTime, { width, height }) {
     this.pos.x += this.speed.x
     this.pos.y += this.speed.y
-    if (this.pos.y >= cHeight - this.radius) {
-      this.pos.y = cHeight / 2
-      this.pos.x = cWidth / 2
+    if (this.pos.y >= height - this.radius) {
+      this.pos.y = height / 2
+      this.pos.x = width / 2
       this.speed = { x: Math.random() * 4 - 2, y: 2 }
     }
     if (this.pos.y <= this.radius) {
       this.speed.y *= -1
     }
-    if (this.pos.x >= cWidth - this.radius || this.pos.x <= 0 + this.radius) {
+    if (this.pos.x >= width - this.radius || this.pos.x <= 0 + this.radius) {
       this.speed.x *= -1
     }
   }

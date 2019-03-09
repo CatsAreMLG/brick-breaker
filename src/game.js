@@ -8,9 +8,9 @@ export default class Game {
   }
   start() {
     //ball
-    this.ball = new Ball(10, this.width, this.height, '#f00')
+    this.ball = new Ball(10, '#f00', this)
     //draw paddle
-    this.paddle = new Paddle(100, 20, '#000', this.width, this.height)
+    this.paddle = new Paddle(100, 20, '#000', this)
     //game objects
     this.gameObjects = [this.ball, this.paddle]
     //input
@@ -20,8 +20,6 @@ export default class Game {
     this.gameObjects.forEach(objects => objects.draw(ctx))
   }
   update(deltaTime) {
-    this.gameObjects.forEach(objects =>
-      objects.update(deltaTime, this.width, this.height)
-    )
+    this.gameObjects.forEach(objects => objects.update(deltaTime, this))
   }
 }

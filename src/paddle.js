@@ -1,11 +1,12 @@
 export default class Paddle {
-  constructor(width, height, color, cWidth, cHeight) {
+  constructor(width, height, color, game) {
     this.width = width
     this.height = height
     this.pos = {
-      x: cWidth / 2 - this.width / 2,
-      y: cHeight - this.height * 2
+      x: game.width / 2 - this.width / 2,
+      y: game.height - this.height * 2
     }
+    this.game = game
     this.color = color
     this.maxSpeed = 7
     this.speed = 0
@@ -24,9 +25,9 @@ export default class Paddle {
     ctx.fillStyle = this.color
     ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height)
   }
-  update(deltaTime, cWidth) {
+  update(deltaTime, { width }) {
     this.pos.x += this.speed
     if (this.pos.x < 0) this.pos.x = 0
-    if (this.pos.x > cWidth - this.width) this.pos.x = cWidth - this.width
+    if (this.pos.x > width - this.width) this.pos.x = width - this.width
   }
 }
