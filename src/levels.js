@@ -7,7 +7,7 @@ export const buildLevel = (game, level) => {
       if (brick === 1) {
         let pos = {
           x: 80 * j,
-          y: 20 + 24 * i
+          y: 75 + 24 * i
         }
         bricks.push(new Brick(game, pos))
       }

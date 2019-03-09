@@ -1,3 +1,5 @@
+import { detectCollision } from './collisionDetection.js'
+
 export default class Ball {
   constructor(radius, color, game) {
     this.radius = radius
@@ -34,16 +36,8 @@ export default class Ball {
       this.speed.x *= -1
     }
     //paddle collision
-    let bottomOfBall = this.pos.y + this.radius
-    let topOfPaddle = this.game.paddle.pos.y
-    let leftOfPaddle = this.game.paddle.pos.x
-    let rightOfPaddle = this.game.paddle.pos.x + this.game.paddle.width
-    if (
-      bottomOfBall >= topOfPaddle &&
-      this.pos.x + this.radius >= leftOfPaddle &&
-      this.pos.x - this.radius <= rightOfPaddle
-    ) {
-      this.pos.y = topOfPaddle - this.radius
+    if (detectCollision(this, this.game.paddle)) {
+      this.pos.y = this.game.paddle.pos.y - this.radius
       this.speed.y *= -1
     }
   }

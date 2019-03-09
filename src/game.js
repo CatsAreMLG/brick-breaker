@@ -16,7 +16,7 @@ export default class Game {
     //bricks
     let bricks = buildLevel(this, level1)
     //game objects
-    this.gameObjects = [this.ball, this.paddle, ...bricks]
+    this.gameObjects = [...bricks, this.ball, this.paddle]
     //input
     new InputHandler(this.paddle)
   }
