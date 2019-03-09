@@ -16,6 +16,10 @@ export default class InputHandler {
           break
         case 27:
           game.togglePause()
+          break
+        case 32:
+          game.start()
+          break
         default:
           break
       }

@@ -7,7 +7,6 @@ const GAME_WIDTH = canvas.clientWidth
 const GAME_HEIGHT = canvas.clientHeight
 //variables
 let game = new Game(GAME_WIDTH, GAME_HEIGHT)
-game.start()
 let lastTime = 0
 //render
 const gameLoop = timestamp => {
