@@ -18,10 +18,16 @@ export default class Ball {
   update(deltaTime, cWidth, cHeight) {
     this.pos.x += this.speed.x
     this.pos.y += this.speed.y
-    if (this.pos.y >= cHeight) {
+    if (this.pos.y >= cHeight - this.radius) {
       this.pos.y = cHeight / 2
       this.pos.x = cWidth / 2
       this.speed = { x: Math.random() * 4 - 2, y: 2 }
+    }
+    if (this.pos.y <= this.radius) {
+      this.speed.y *= -1
+    }
+    if (this.pos.x >= cWidth - this.radius || this.pos.x <= 0 + this.radius) {
+      this.speed.x *= -1
     }
   }
 }
