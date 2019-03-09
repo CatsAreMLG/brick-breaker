@@ -22,6 +22,7 @@ export default class Game {
     new InputHandler(this.paddle, this)
   }
   start() {
+    if (this.gamestate !== GAME_STATE.MENU) return
     this.gamestate = GAME_STATE.RUNNING
     //bricks
     let bricks = buildLevel(this, level1)
