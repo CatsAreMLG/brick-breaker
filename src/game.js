@@ -16,13 +16,18 @@ export default class Game {
     this.width = cWidth
     this.height = cHeight
     this.gamestate = GAME_STATE.MENU
+    this.lives = 3
     this.ball = new Ball(10, '#f00', this)
     this.paddle = new Paddle(100, 20, '#000', this)
     this.gameObjects = []
     new InputHandler(this.paddle, this)
   }
   start() {
-    if (this.gamestate !== GAME_STATE.MENU) return
+    if (
+      this.gamestate !== GAME_STATE.MENU &&
+      this.gamestate !== GAME_STATE.GAME_OVER
+    )
+      return
     this.gamestate = GAME_STATE.RUNNING
     //bricks
     let bricks = buildLevel(this, level1)
@@ -47,8 +52,17 @@ export default class Game {
       ctx.textAlign = 'center'
       ctx.fillText('Press SPACEBAR To Start', this.width / 2, this.height / 2)
     }
+    if (this.gamestate == GAME_STATE.GAME_OVER) {
+      ctx.fillStyle = 'rgb(0,0,0)'
+      ctx.fillRect(0, 0, this.width, this.height)
+      ctx.font = '30px Arial'
+      ctx.fillStyle = 'white'
+      ctx.textAlign = 'center'
+      ctx.fillText('GAME OVER', this.width / 2, this.height / 2)
+    }
   }
   update(deltaTime) {
+    if (this.lives === 0) this.gamestate = GAME_STATE.GAME_OVER
     if (this.gamestate !== GAME_STATE.RUNNING) return
     this.gameObjects.forEach(objects => objects.update(deltaTime, this))
     this,

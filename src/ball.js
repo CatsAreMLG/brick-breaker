@@ -23,6 +23,7 @@ export default class Ball {
     this.pos.y += this.speed.y
     //wall bottom
     if (this.pos.y >= height - this.radius) {
+      this.game.lives--
       this.pos.y = height / 2
       this.pos.x = width / 2
       this.speed = { x: Math.random() * 8 - 4, y: 4 }
