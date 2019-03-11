@@ -1,5 +1,5 @@
 import { detectCollision } from './collisionDetection.js'
-
+//brick
 export default class Brick {
   constructor(game, pos) {
     this.width = 80
